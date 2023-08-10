@@ -32,7 +32,7 @@ public class EnemyFireHandler : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
        
-        if (collision.gameObject.name == "Fireball(Clone)" || collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Fireball(Clone)" || collision.gameObject.name == "Player" || collision.gameObject.tag == "Obstacles")
         {
              Destroy(gameObject);
         }

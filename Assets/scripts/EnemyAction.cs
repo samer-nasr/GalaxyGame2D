@@ -32,7 +32,6 @@ public class EnemyAction : MonoBehaviour
         
         if (collision.gameObject.name == "Fireball(Clone)" || collision.gameObject.name == "Player")
         { 
-            //Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
         }
     }

@@ -27,4 +27,12 @@ public class AsteroidMove : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" || collision.gameObject.name == "Fireball(Clone)")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

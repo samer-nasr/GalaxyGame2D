@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float health;
     public float shootingDelay = 0.2f;
     public bool shootingDelayed;
+    public float enemyDamage = 10f;
 
     public GameObject projectile;
     public Transform playerShip;
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        setHealth(-10f);
+        setHealth(-enemyDamage);
     }
 
     public void setHealth(float healthChange)
