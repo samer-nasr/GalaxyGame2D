@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Threading;
+using System.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject enemyPrefab;
-    public float delay = 2f;
+    public static float delay = 3f;
     [SerializeField]private bool isGameActive = true;
 
     // Update is called once per frame
@@ -18,8 +19,9 @@ public class EnemySpawner : MonoBehaviour
        
     }
 
-    private void Start()
+    async void Start()
     {
+        await Task.Delay(5000);
         StartCoroutine(spawnRoutine());
     }
 

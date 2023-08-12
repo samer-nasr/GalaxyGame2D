@@ -25,9 +25,13 @@ public class MoveForward : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "EnemyFireball(Clone)" || collision.gameObject.tag == "Obstacles")
+        if (collision.gameObject.name == "EnemyFireball(Clone)")
         {
-            //Debug.Log(collision.gameObject.name);
+          
+            Destroy(gameObject);
+        }else if (collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.tag == "Obstacles")
+        {
+            ScoreScript.scoreValue += 1;
             Destroy(gameObject);
         }
     }

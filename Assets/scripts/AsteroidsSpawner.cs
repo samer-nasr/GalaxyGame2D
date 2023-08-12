@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class AsteroidsSpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject[] asteroidsPrefab;
-    public float delay = 2f;
+    public float delay = 4f;
     [SerializeField] private bool isGameActive = true;
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
+        await Task.Delay(12000);
         StartCoroutine(spawnRoutine());
     }
 
