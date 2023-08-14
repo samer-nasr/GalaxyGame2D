@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject enemyPrefab;
-    public static float delay = 3f;
+    public static float delay = 4f;
     [SerializeField]private bool isGameActive = true;
 
     // Update is called once per frame

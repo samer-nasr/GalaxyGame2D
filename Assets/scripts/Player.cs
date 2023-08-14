@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
@@ -11,7 +13,7 @@ public class Player : MonoBehaviour
     public float health;
     public float shootingDelay = 0.2f;
     public bool shootingDelayed;
-    public float enemyDamage = 10f;
+    public float enemyDamage = 20f;
 
     public GameObject projectile;
     public Transform playerShip;
@@ -29,7 +31,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health == 0)
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
+
         //get input and move
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         input.Normalize();
@@ -54,9 +60,9 @@ public class Player : MonoBehaviour
                 //gunAudio.Play();
                 Vector3 playerPosition = transform.position;
                 playerPosition.y += 1;
-                
-                GameObject p = Instantiate(projectile, playerPosition , Quaternion.identity);
-                
+
+                GameObject p = Instantiate(projectile, playerPosition, Quaternion.identity);
+
                 StartCoroutine(DelayShooting());
             }
         }
@@ -71,7 +77,18 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        setHealth(-enemyDamage);
+        if (collision.gameObject.name == "Heal(Clone)")
+        {
+            if (health < 100)
+            {
+                setHealth(enemyDamage);
+            }
+        }
+        else
+        {
+            setHealth(-enemyDamage);
+        }
+        
     }
 
     public void setHealth(float healthChange)
@@ -81,5 +98,8 @@ public class Player : MonoBehaviour
 
         healthBar.setHealth(health);
     }
+
+    
+
 
 }
