@@ -14,7 +14,11 @@ public class HealScript : MonoBehaviour
     async void Start()
     {
         await Task.Delay(15000);
-        StartCoroutine(spawnHeal());
+        if (healPrefabs != null)
+        {
+            StartCoroutine(spawnHeal());
+        }
+        
     }
 
     // Update is called once per frame
